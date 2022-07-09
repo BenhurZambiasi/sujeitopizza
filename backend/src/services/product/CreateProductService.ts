@@ -16,6 +16,15 @@ export class CreateProductService {
     name,
     price,
   }: IProductRequest) {
-    return { ok: true };
+    const product = await prismaClient.product.create({
+      data: {
+        banner,
+        category_id,
+        description,
+        name,
+        price,
+      },
+    });
+    return product;
   }
 }

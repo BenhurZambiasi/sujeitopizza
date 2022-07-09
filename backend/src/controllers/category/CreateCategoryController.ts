@@ -8,6 +8,6 @@ export class CreateCategoryController {
 
     const category = await createUserService.execute({ name });
 
-    return res.json(category);
+    return res.status(201).json(category);
   }
 }
