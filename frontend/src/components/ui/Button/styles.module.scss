@@ -1,0 +1,46 @@
+.containerButton {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 62px;
+  .button {
+    width: 100%;
+    background-color: var(--red-900);
+    border: 0;
+    padding: 0.4rem;
+    color: var(--white);
+    border-radius: 0.5rem;
+    transition: opacity 0.2s;
+
+    &[disabled] {
+      cursor: not-allowed;
+      svg {
+        animation: animate 2s infinite;
+      }
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .buttonText {
+    color: var(--white);
+  }
+  .textError {
+    color: var(--red-900);
+    padding-left: 10px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+@keyframes animate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
