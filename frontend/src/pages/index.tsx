@@ -7,7 +7,7 @@ import {
   useEffect,
 } from "react";
 
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import router from "next/router";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,6 +24,7 @@ import { validateEmail } from "../utils/emailValidation";
 
 import logo from "../../public/logo.svg";
 import styles from "../../styles/home.module.scss";
+import { canSSRGuest } from "../utils/canSSRGuest";
 interface IState {
   email: string;
   password: string;
@@ -157,3 +158,9 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+  return {
+    props: {},
+  };
+});

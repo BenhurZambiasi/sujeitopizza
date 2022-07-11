@@ -12,3 +12,11 @@ export const sessionLogin = async (credentials: TSigninProps) => {
     return Promise.reject(error);
   }
 };
+
+export const userLogged = async () => {
+  try {
+    return await api.get("/me");
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
