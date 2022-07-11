@@ -5,10 +5,11 @@ import {
   SetStateAction,
   useContext,
   useState,
+  useEffect,
 } from "react";
-import { destroyCookie, setCookie } from "nookies";
+import { destroyCookie, setCookie, parseCookies } from "nookies";
 import router from "next/router";
-import { sessionLogin } from "../services/auth";
+import { sessionLogin, userLogged } from "../services/auth";
 
 type TAuthContext = {
   user: TUserProps;
@@ -87,10 +88,21 @@ export function AuthProvider({ children }: TAuthProviderProps) {
       setLoading(false);
       return { success: false, failure: true, message: "" };
     }
-    setLoading(false);
-
-    return { success: false, failure: true, message: "" };
   };
+
+  useEffect(() => {
+    const { "@nextauth.token": token } = parseCookies();
+    if (token)
+      userLogged()
+        .then((response) => {
+          const { id, name, email } = response.data;
+
+          setUser({ id, name, email });
+        })
+        .catch((err) => {
+          router.push("/");
+        });
+  }, []);
 
   return (
     <AuthContext.Provider
