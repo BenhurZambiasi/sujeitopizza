@@ -8,7 +8,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 interface ITextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  textError: string;
+  textError?: string;
 }
 
 export function Input({ textError, showOrHidePassword, ...rest }: IInputProps) {
@@ -34,6 +34,11 @@ export function Input({ textError, showOrHidePassword, ...rest }: IInputProps) {
   );
 }
 
-export function TextArea({ ...rest }: ITextAreaProps) {
-  return <textarea className={styles.input} {...rest}></textarea>;
+export function TextArea({ textError, ...rest }: ITextAreaProps) {
+  return (
+    <div className={styles.containerTextArea}>
+      <textarea className={styles.input} {...rest}></textarea>
+      <span className={styles.textError}>{textError}</span>
+    </div>
+  );
 }

@@ -6,7 +6,7 @@ import { CreateProductController } from "../../controllers/product/CreateProduct
 import { ListByCategoryController } from "../../controllers/product/ListByCategoryController";
 import { isAthenticated } from "../../middlewares/isAuthenticated";
 
-const upload = multer(uploadConfig.upload("../../../tmp"));
+const upload = multer(uploadConfig.upload("./tmp"));
 
 const productRouter = Router();
 productRouter.post(

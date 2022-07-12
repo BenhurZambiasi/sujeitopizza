@@ -46,3 +46,23 @@
     font-size: 14px;
   }
 }
+
+.containerTextArea {
+  margin-bottom: 1rem;
+  height: 140px;
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    border-radius: 0.5rem;
+    background-color: var(--dark-900);
+    color: var(--white);
+    padding: 1rem;
+    border: 1px solid var(--gray-100);
+    resize: none;
+  }
+  .textError {
+    color: var(--red-900);
+    padding-left: 10px;
+    font-size: 14px;
+  }
+}

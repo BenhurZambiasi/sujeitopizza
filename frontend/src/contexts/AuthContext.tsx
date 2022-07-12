@@ -100,7 +100,7 @@ export function AuthProvider({ children }: TAuthProviderProps) {
           setUser({ id, name, email });
         })
         .catch((err) => {
-          router.push("/");
+          signOut();
         });
   }, []);
 

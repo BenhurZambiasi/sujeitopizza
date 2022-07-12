@@ -7,19 +7,23 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   children: ReactNode;
   textError?: string;
+  classNameButton?: string;
+  colorSpiner?: string;
 }
 
 export function Button({
   children,
   loading,
   textError,
+  classNameButton,
+  colorSpiner,
   ...rest
 }: IButtonProps) {
   return (
-    <div className={styles.containerButton}>
-      <button className={styles.button} {...rest} disabled={loading}>
+    <div className={`${styles.containerButton} ${classNameButton}`}>
+      <button className={`${styles.button}`} {...rest} disabled={loading}>
         {loading ? (
-          <FaSpinner color="#fff" size={16} />
+          <FaSpinner color={colorSpiner || "#fff"} size={16} />
         ) : (
           <a className={styles.buttonText}>{children}</a>
         )}

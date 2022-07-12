@@ -1,4 +1,3 @@
-import { ReactNode, ButtonHTMLAttributes } from "react";
 import Head from "next/head";
 
 interface IHeaderProps {

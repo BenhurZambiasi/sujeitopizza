@@ -14,7 +14,7 @@ import Link from "next/link";
 
 import { useAuth } from "../contexts/AuthContext";
 
-import { Header } from "../components/header";
+import { Header } from "../components/head";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input/input";
 
@@ -108,7 +108,6 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const { email, password } = router.query;
-    console.log(email, password);
     if (email && password) {
       setState({ email: String(email), password: String(password) });
     }

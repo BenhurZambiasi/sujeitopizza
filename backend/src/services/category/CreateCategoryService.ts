@@ -9,10 +9,17 @@ export class CreateCategoryService {
     if (!name || !name.trim()) {
       throw new Error("Name is required");
     }
+    const hasCategory = await prismaClient.category.findFirst({
+      where: { name: name.toLowerCase() },
+    });
+
+    if (hasCategory) {
+      throw new Error("Category already exists");
+    }
 
     const category = await prismaClient.category.create({
       data: {
-        name: name,
+        name: name.toLowerCase(),
       },
       select: {
         id: true,

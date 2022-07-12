@@ -1,0 +1,41 @@
+.container {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 300px;
+
+  .uploadContainer {
+    width: 100%;
+    height: 280px;
+    background-color: var(--dark-900);
+    border-radius: 0.3rem;
+    border: 1px solid var(--gray-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+
+    span {
+      z-index: 99;
+      position: absolute;
+      opacity: 0.7;
+      transition: all 0.5s;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    img {
+      object-fit: contain;
+    }
+  }
+  .textError {
+    color: var(--red-900);
+    padding-left: 10px;
+    font-size: 14px;
+  }
+}

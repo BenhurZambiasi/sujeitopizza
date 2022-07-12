@@ -1,0 +1,29 @@
+.container {
+  max-width: 720px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  h1 {
+    color: var(--white);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    .btnAdd {
+      max-width: 100% !important;
+      button {
+        background-color: var(--green-900) !important;
+        height: 40px;
+      }
+      a {
+        font-weight: bold;
+        color: var(--dark-900) !important;
+      }
+    }
+  }
+}

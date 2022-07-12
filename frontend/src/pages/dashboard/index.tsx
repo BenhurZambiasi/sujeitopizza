@@ -1,10 +1,16 @@
 import { NextPage } from "next";
+import { Header } from "../../components/head";
+import { MasterHeader } from "../../components/masterHeader";
 import { canSSRAuth } from "../../utils/canSSRAuth";
 
 const Dashboard: NextPage = () => {
   return (
     <div>
-      <h1>Dashboard</h1>
+      <Header title="Painel - Sujeito Pizzaria" />
+      <MasterHeader />
+      <div>
+        <main></main>
+      </div>
     </div>
   );
 };
