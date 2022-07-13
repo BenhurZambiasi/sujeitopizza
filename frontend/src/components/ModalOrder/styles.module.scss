@@ -1,0 +1,49 @@
+.modalContainer {
+  width: 620px;
+  background-color: var(--dark-700);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  h2 {
+    margin: 1rem 0;
+  }
+
+  .table {
+    font-size: 1.3rem;
+  }
+
+  .containerItem {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+
+    strong {
+      color: var(--green-900);
+    }
+
+    .description {
+      margin-top: 0.5rem;
+      word-break: break-all;
+    }
+  }
+  .btnFinish {
+    margin-top: 1.5rem;
+    border: 0;
+    background-color: rgba(0, 0, 0, 40%);
+    color: var(--red-900);
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+    width: 150px;
+  }
+}
+
+@media (max-width: 700px) {
+  .modalContainer {
+    width: 530px;
+  }
+}
+@media (max-width: 550px) {
+  .modalContainer {
+    width: 330px;
+  }
+}

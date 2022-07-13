@@ -1,0 +1,137 @@
+{
+  "openapi":"3.0.0",
+  "info":{
+    "title":"Api Sujeito Pizzaria",
+    "description":"Api Sujeito Pizzaria",
+    "contact":{
+      "email":"suport@sujeito.com"
+    },
+    "version":"1.0.0"
+    
+    },
+    "servers":[
+      {
+        "url":"http://localhost:3333",
+        "description":"Api test"
+      }
+    ],
+    "paths":{
+      "/session":{
+        "post":{
+          "sumary":"Login de usuários",
+          "description":"Rota para realizar login na aplicação",
+          "tags":["Auth"],
+          "requestBody":{
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Auth"
+                }
+              }
+            }
+          },
+          "responses":{}
+        }
+      },
+      "/category":{
+        "post":{
+          "sumary":"cadastro de categoria",
+          "tags":["Category"],
+          "security":[{"bearerAuth":[]}],
+          "requestBody":{
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "responses":{}
+        }
+      },
+      "/categories":{
+        "get":{
+          "sumary":"Lista de categoria",
+          "tags":["Category"],
+          "security":[{"bearerAuth":[]}],
+          "responses":{}
+        }
+      },
+      "/order":{
+        "post":{
+          "sumary":"Criação de pedidos",
+          "description":"Rota para abertura de pedido",
+          "tags":["Order"],
+          "security":[{"bearerAuth":[]}],
+          "requestBody":{
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "responses":{}
+        },
+        "put":{
+          "sumary":"Send",
+          "description":"Rota para abertura de pedido",
+          "tags":["Order"],
+          "security":[{"bearerAuth":[]}],
+          "parameters":[
+            {
+            "name":"order_id",
+            "in":"query",
+            "required":"true"
+
+            }
+          ],
+          
+          "responses":{}
+        }
+      }
+    },
+    "components":{
+      "schemas":{
+        "Auth":{
+          "type": "object",
+          "properties":{
+            "email":{
+              "type": "string"
+            },
+            "password":{
+              "type": "string"
+            }
+          }
+        },
+        "Order":{
+          "type": "object",
+          "properties":{
+            "table":{
+              "type": "integer"
+            },
+            "name":{
+              "type": "string"
+            }
+          }
+        },
+        "Category":{
+          "type": "object",
+          "properties":{
+            "name":{
+              "type": "string"
+            }
+          }
+        }
+      },
+      "securitySchemes":{
+        "bearerAuth":{
+          "type": "http",
+          "scheme":"bearer",
+          "bearerFormat":"JWT"
+        }
+      }
+    }
+}
