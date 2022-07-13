@@ -10,6 +10,7 @@ import {
 import { destroyCookie, setCookie, parseCookies } from "nookies";
 import router from "next/router";
 import { sessionLogin, userLogged } from "../services/auth";
+import { api } from "../services/api";
 
 type TAuthContext = {
   user: TUserProps;
@@ -77,6 +78,7 @@ export function AuthProvider({ children }: TAuthProviderProps) {
           path: "/",
         });
         setLoading(false);
+        api.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
 
         return { success: true, failure: false, message: "" };
       } else {

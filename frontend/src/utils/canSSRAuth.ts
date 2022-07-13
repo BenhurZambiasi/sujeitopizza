@@ -3,8 +3,7 @@ import {
   GetServerSidePropsContext,
   GetServerSidePropsResult,
 } from "next";
-import { destroyCookie, parseCookies } from "nookies";
-import decode from "jwt-decode";
+import { parseCookies } from "nookies";
 
 export function canSSRAuth<P>(fn: GetServerSideProps<P>) {
   return async (

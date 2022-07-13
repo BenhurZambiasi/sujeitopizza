@@ -171,14 +171,15 @@ const Product: NextPage = () => {
               onFocus={handleFocus}
               textError={messageErrors.category_id}>
               <option value="">Selecione...</option>
-              {categories.map((category) => (
-                <option
-                  className={styles.options}
-                  key={category.id}
-                  value={category.id}>
-                  {category.name}
-                </option>
-              ))}
+              {categories &&
+                categories.map((category) => (
+                  <option
+                    className={styles.options}
+                    key={category.id}
+                    value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
             </Select>
             <Input
               type="text"

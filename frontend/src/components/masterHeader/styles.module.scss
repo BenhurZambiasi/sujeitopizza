@@ -31,6 +31,10 @@
         }
       }
 
+      .active {
+        color: var(--red-900);
+      }
+
       button {
         margin-left: 2rem;
         background: transparent;
