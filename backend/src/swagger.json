@@ -85,10 +85,77 @@
             "name":"order_id",
             "in":"query",
             "required":"true"
-
             }
           ],
           
+          "responses":{}
+        },
+        "get":{
+          "sumary":"Lista os itens do pedido",
+          "tags":["Order"],
+          "security":[{"bearerAuth":[]}],
+          "parameters":[
+            {
+            "name":"order_id",
+            "in":"query",
+            "required":"true"
+            }
+          ],
+          "responses":{}
+        }
+      },
+      "/orders":{
+        "get":{
+          "sumary":"Lista de pedidos",
+          "tags":["Order"],
+          "security":[{"bearerAuth":[]}],
+          "responses":{}
+        }
+      },
+      "/order/add":{
+        "post":{
+          "sumary":"Adiciona os itens em um pedido",
+          "tags":["Order"],
+          "security":[{"bearerAuth":[]}],
+          "requestBody":{
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Items"
+                }
+              }
+            }
+          },
+          "responses":{}
+        }
+      },
+      "/order/remove/item":{
+        "delete":{
+          "sumary":"remove um item da lista",
+          "tags":["Order"],
+          "security":[{"bearerAuth":[]}],
+          "parameters":[
+            {
+            "name":"item_id",
+            "in":"query",
+            "required":"true"
+            }
+          ],
+          "responses":{}
+        }
+      },
+      "/users":{
+        "post":{
+          "sumary":"remove um item da lista",
+          "tags":["Order"],
+          "security":[{"bearerAuth":[]}],
+          "parameters":[
+            {
+            "name":"item_id",
+            "in":"query",
+            "required":"true"
+            }
+          ],
           "responses":{}
         }
       }
@@ -116,6 +183,29 @@
               "type": "string"
             }
           }
+        },
+        "Items":{
+          "type":"object",
+          "properties":{
+            "itens":{
+              "type": "array",
+              "items":{
+            "type":"object",
+            "properties":{
+              "order_id":{
+                "type":"string"
+              },
+               "product_id":{
+                "type":"string"
+              },
+              "amount":{
+                "type":"integer"
+              }
+            }
+          }
+            }
+          }
+          
         },
         "Category":{
           "type": "object",
