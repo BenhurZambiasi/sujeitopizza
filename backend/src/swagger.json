@@ -144,19 +144,58 @@
           "responses":{}
         }
       },
+      "/product":{
+        "post":{
+          "sumary":"Adiciona os itens em um pedido",
+          "tags":["Product"],
+          "security":[{"bearerAuth":[]}],
+          "requestBody":{
+            "content":{
+              "multipart/form-data":{
+                "schema":{
+                  "$ref":"#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "responses":{}
+        },
+        
+        "get":{
+          "sumary":"Lista de pedidos",
+          "tags":["Product"],
+          "security":[{"bearerAuth":[]}],
+          "parameters":[{
+            "name":"category_id",
+             "in":"query",
+            "required":"true"
+          }],
+          "responses":{}      
+        }
+      },
       "/users":{
         "post":{
-          "sumary":"remove um item da lista",
-          "tags":["Order"],
+          "sumary":"Criação de usuário",
+          "tags":["User"],
           "security":[{"bearerAuth":[]}],
-          "parameters":[
-            {
-            "name":"item_id",
-            "in":"query",
-            "required":"true"
+          "requestBody":{
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/User"
+                }
+              }
             }
-          ],
+          },
           "responses":{}
+        }
+      },
+      "/me":{
+        "get":{
+          "sumary":"Lista de pedidos",
+          "tags":["User"],
+          "security":[{"bearerAuth":[]}],
+          "responses":{}      
         }
       }
     },
@@ -180,6 +219,20 @@
               "type": "integer"
             },
             "name":{
+              "type": "string"
+            }
+          }
+        },
+        "User":{
+          "type": "object",
+          "properties":{
+            "name":{
+              "type": "string"
+            },
+            "email":{
+              "type": "string"
+            },
+            "password":{
               "type": "string"
             }
           }
@@ -212,6 +265,23 @@
           "properties":{
             "name":{
               "type": "string"
+            }
+          }
+        },"Product":{
+          "type": "object",
+          "properties":{
+            "name":{
+              "type":"string"
+            },
+            "description":{
+              "type":"string"
+            },
+            "price":{
+              "type":"string"
+            },
+            "file":{
+              "type":"string",
+              "format":"binary"
             }
           }
         }
